@@ -115,4 +115,18 @@ class NumberTester {
 		}
 		return (sum == product);
 	}
+	
+	static boolean isSunny(long number) {
+		long num = number + 1;
+		int numroot = (int) Math.sqrt(num);
+		if(numroot*numroot == num) {return true;}
+		else {return false;}
+	}
+	
+	static boolean isSquare(long number) {
+		int numroot = (int) Math.sqrt(number);
+		if(numroot*numroot == number) {return true;}
+		else {return false;}
+	}
+	
 }

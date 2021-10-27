@@ -9,6 +9,8 @@ class NumObj {
 	final private boolean SPY;
 	final private boolean EVEN;
 	final private boolean ODD;
+	final private boolean SUNNY;
+	final private boolean SQUARE;
 	
 	public NumObj(final long number) {
 		this.number = number;
@@ -24,6 +26,8 @@ class NumObj {
 			EVEN = false;
 			ODD = true;
 		}
+		SUNNY = isSunny(number);
+		SQUARE = isSquare(number);
 	}
 	
 	void printProperties() {
@@ -33,7 +37,10 @@ class NumObj {
 		if(PALINDROMIC) {System.out.print("palindromic, ");}
 		if(GAPFUL) {System.out.print("gapful, ");}
 		if(SPY) {System.out.print("spy, ");}
+		if(SUNNY) {System.out.print("sunny, ");}
+		if(SQUARE) {System.out.print("square ");}
 		if(EVEN) {System.out.print("even\n");} else {System.out.print("odd\n");}
+		
 	}
 	
 	boolean isProperty(String property) {
@@ -45,13 +52,13 @@ class NumObj {
 			case "spy": return SPY;
 			case "even": return EVEN;
 			case "odd": return ODD;
+			case "sunny": return SUNNY;
+			case "square": return SQUARE;
 			default:
 				return false;
 		
 		}
 	}
-	
-	
 	
 	static boolean isBuzzNumber(long number, long divisor) {
 		if(number <= 0) {
@@ -150,5 +157,18 @@ class NumObj {
 			}
 		}
 		return (sum == product);
+	}
+	
+	static boolean isSunny(long number) {
+			long num = number + 1;
+			int numroot = (int) Math.sqrt(num);
+			if(numroot*numroot == num) {return true;}
+			else {return false;}
+	}
+
+	static boolean isSquare(long number) {
+		int numroot = (int) Math.sqrt(number);
+		if(numroot*numroot == number) {return true;}
+		else {return false;}
 	}
 }
